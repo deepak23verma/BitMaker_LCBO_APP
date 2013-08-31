@@ -24,9 +24,9 @@ class HtmlGenerator
 	def beers
 	 	@all_beers = @all_products.each {|category, value| category == "primary_category" && value == "Beer"}
 	 	lcbo_beers = File.open("lcbo_beers.html", "a")
-	 	lcbo_beers.puts "\t<div id=\"container\">"
+	 	lcbo_beers.puts "\t<div class=\"container\">"
 	 	@all_beers.each_with_index do |beer, index|
-	 		lcbo_beers.puts "\t\t<div class=\"list_items\">"
+	 		lcbo_beers.puts "\t\t<div class=\"product_details\">"
 		 		lcbo_beers.puts "\t\t\t<img src=\"#{@all_products[index]["image_thumb_url"]}\">"
 		 		lcbo_beers.puts "\t\t\t<h2>#{@all_beers[index]["name"]}</h2>"
 	 		lcbo_beers.puts "\t\t\</div>" #closing list_items div

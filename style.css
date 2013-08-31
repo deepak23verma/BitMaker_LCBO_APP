@@ -1,0 +1,18 @@
+#container {
+	width: 960px;
+	background-color: grey;
+	margin: auto;
+}
+
+.list_items {
+	margin-top: 5px;
+	background-color: ligthblue;
+}
+
+.list_items img {
+	float: left;
+}
+
+.list_items h2 {
+	float: left;
+}

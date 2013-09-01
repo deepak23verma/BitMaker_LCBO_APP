@@ -4,6 +4,29 @@
 	margin: auto;
 }
 
+.page_container {
+	width: 960px;
+	border: 2px solid #373f24;
+	margin: 0 auto;
+}
+
+.page_header {
+	background-color: #373f24;
+	margin-bottom: 10px;
+}
+
+.page_body {
+	background-color: #373f24;
+	margin-bottom: 10px;	
+}
+
+h1 {
+	font-size: 35px;
+	color: #C0C0C0;
+	text-align: center;
+	padding: 15px 30px;
+}
+
 .product_details {
 	margin-top: 5px;
 	background-color: ligthblue;

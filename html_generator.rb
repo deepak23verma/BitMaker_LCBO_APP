@@ -24,14 +24,20 @@ class HtmlGenerator
 	def beers
 	 	@all_beers = @all_products.each {|category, value| category == "primary_category" && value == "Beer"}
 	 	lcbo_beers = File.open("lcbo_beers.html", "a")
-	 	lcbo_beers.puts "\t<div class=\"container\">"
-	 	@all_beers.each_with_index do |beer, index|
-	 		lcbo_beers.puts "\t\t<div class=\"product_details\">"
-		 		lcbo_beers.puts "\t\t\t<img src=\"#{@all_products[index]["image_thumb_url"]}\">"
-		 		lcbo_beers.puts "\t\t\t<h2>#{@all_beers[index]["name"]}</h2>"
-	 		lcbo_beers.puts "\t\t\</div>" #closing list_items div
-	 	end
-	 	lcbo_beers.puts "</div>" #closing container div
+	 	lcbo_beers.puts "\t<div class=\"page_container\">"
+		 	lcbo_beers.puts "\t<div class=\"page_header\">"
+		 		lcbo_beers.puts "\t\t<h1>Page Header</h1>"
+		 	lcbo_beers.puts "\t<div>" #closing page_header div
+		 	lcbo_beers.puts "\t<div class=\"page_body\">"
+		 		lcbo_beers.puts "\t\t<h1>Page body</h1>"
+		 	lcbo_beers.puts "\t<div>" #closing page_body div
+		 	# @all_beers.each_with_index do |beer, index|
+		 	# 	lcbo_beers.puts "\t\t<div class=\"product_details\">"
+			# 		lcbo_beers.puts "\t\t\t<img src=\"#{@all_products[index]["image_thumb_url"]}\">"
+			# 		lcbo_beers.puts "\t\t\t<h2>#{@all_beers[index]["name"]}</h2>"
+		 	# 	lcbo_beers.puts "\t\t\</div>" #closing list_items div
+		 	# end
+	 	lcbo_beers.puts "</div>" #closing page_container div
 	 	lcbo_beers.puts "</body"
 	 	lcbo_beers.puts "</html>"
 	 	lcbo_beers.close 
@@ -66,7 +72,7 @@ class HtmlGenerator
 	 end
 
 	def main_wrapper
-	 	puts "\t<div id=\"container\">"
+	 	puts "\t<div id=\"main_container\">"
 	end
 
 

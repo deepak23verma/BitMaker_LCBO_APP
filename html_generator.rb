@@ -32,8 +32,8 @@ class HtmlGenerator
 		 		lcbo_beers.puts "\t</div>" #closing header_navigation
 		 		lcbo_beers.puts "<div class=\"header_navigation\">"
 			 		lcbo_beers.puts "<ul>"
-			        	 lcbo_beers.puts "<li>SPIRITS</li>"
-			        	 lcbo_beers.puts "<li>WINE</li>"
+			        	 lcbo_beers.puts "<li><a href=\"lcbo_spirits.html\">SPIRITS</a></li>"
+			        	 lcbo_beers.puts "<li><a href=\"lcbo_wines.html\">WINE</a></li>"
 			        	 lcbo_beers.puts "<li><a href=\"lcbo_beers.html\">BEERS</a></li>"
 			        	 lcbo_beers.puts "<li><a href=\"lcbo.html\">HOME</a></li>"
 					lcbo_beers.puts "</ul>"

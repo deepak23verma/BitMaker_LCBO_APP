@@ -44,11 +44,22 @@ class HtmlGenerator
 		 			@all_beers.each_with_index do |beer, index|
 		 				lcbo_beers.puts "\t\t<div class=\"product_details\">"
 		 					lcbo_beers.puts "<div class=\"item_info\">"
-		 						lcbo_beers.puts "<img src=\"#{@all_products[index]["image_thumb_url"]}\">" unless @all_products[index]["image_thumb_url"].nil?
+		 						if @all_products[index]["image_thumb_url"] == nil
+		 							lcbo_beers.puts "<img src=img/beer_image.jpg>"
+		 						else
+		 							lcbo_beers.puts "<img src=\"#{@all_beers[index]["image_thumb_url"]}\">"
+		 						end
 		 					lcbo_beers.puts "</div>" #closing item_info(image)
+		 					lcbo_beers.puts "<div class=\"item_info\">"
+		 						lcbo_beers.puts "<h3>#{@all_beers[index]["name"]}</h3>"
+		 						lcbo_beers.puts "<p><span class=\"category\">Price:</span> $#{(@all_beers[index]["regular_price_in_cents"].to_f)/100}</p>"
+		 						lcbo_beers.puts "<p><span class=\"category\">Origin:</span> #{@all_beers[index]["origin"]}"
+		 						lcbo_beers.puts "<p><span class=\"category\">Alcohol Content:</span> #{(@all_beers[index]["alcohol_content"].to_f)/100}%</p>"
+		 						lcbo_beers.puts "<p><span class=\"category\">Package:</span> #{@all_beers[index]["package"]}"
+		 					lcbo_beers.puts "</div>" #closing item_info(details)
 		 				lcbo_beers.puts "\t\t\</div>" #closing list_items div
 		 			end
-		 	lcbo_beers.puts "\t</div>" #closing page_body div
+		 	lcbo_beers.puts "\t</div>" #<--------CLOSING PAGE BODY
 
 			lcbo_beers.puts "\t<div class=\"page_footer\">" #<-----FOOTER
 		 		lcbo_beers.puts "\t\t<h1>Page Footer</h1>"

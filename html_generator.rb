@@ -34,8 +34,8 @@ class HtmlGenerator
 			 		lcbo_beers.puts "<ul>"
 			        	 lcbo_beers.puts "<li>SPIRITS</li>"
 			        	 lcbo_beers.puts "<li>WINE</li>"
-			        	 lcbo_beers.puts "<li>BEER</li>"
-			        	 lcbo_beers.puts "<li>HOME</li>"
+			        	 lcbo_beers.puts "<li><a href=\"lcbo_beers.html\">BEERS</a></li>"
+			        	 lcbo_beers.puts "<li><a href=\"lcbo.html\">HOME</a></li>"
 					lcbo_beers.puts "</ul>"
 					lcbo_beers.puts "\t</div>" #closing header_navigation
 			 lcbo_beers.puts "\t</div>" #closing page_header div
@@ -67,7 +67,7 @@ class HtmlGenerator
 	 	lcbo_beers.puts "<head>"
 	 	lcbo_beers.puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"reset.css\">"
 	 	lcbo_beers.puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">"
-	 	puts "<\tlink href=\'http://fonts.googleapis.com/css?family=Istok+Web:400,700\' rel=\'stylesheet\' type=\'text/css\'>"
+	 	lcbo_beers.puts "\t<link href=\'http://fonts.googleapis.com/css?family=Istok+Web:400,700\' rel=\'stylesheet\' type=\'text/css\'>"
 	 	lcbo_beers.puts "\t<title>LCBO Beers</title>"
 	 	lcbo_beers.puts "</head>"
 	 	lcbo_beers.puts ""
@@ -82,7 +82,7 @@ class HtmlGenerator
 	 	puts "<head>"
 	 	puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"reset.css\">"
 	 	puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">"
-	 	puts "<\tlink href=\'http://fonts.googleapis.com/css?family=Istok+Web:400,700\' rel=\'stylesheet\' type=\'text/css\'>"
+	 	puts "\t<link href=\'http://fonts.googleapis.com/css?family=Istok+Web:400,700\' rel=\'stylesheet\' type=\'text/css\'>"
 	 	puts "\t<title>LCBO Products</title>"
 	 	puts "</head>"
 	 	puts ""

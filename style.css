@@ -1,6 +1,7 @@
 body {
 	background: #748057;
 	font-family: 'Istok Web', sans-serif;
+	back
 }
 
 .container {
@@ -36,6 +37,11 @@ li {
 	border-left: 1px solid #748057;
 }
 
+a {
+	text-decoration: none;
+	color: #748057;
+}
+
 .page_body {
 	clear: both;
 	background-color: #373f24;
@@ -48,6 +54,7 @@ li {
 
 h1 {
 	font-size: 50px;
+	font-weight: bold;
 	color: #748057;
 	text-align: left;
 	padding: 10px 0 10px 10px;

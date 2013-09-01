@@ -25,12 +25,29 @@ class HtmlGenerator
 	 	@all_beers = @all_products.each {|category, value| category == "primary_category" && value == "Beer"}
 	 	lcbo_beers = File.open("lcbo_beers.html", "a")
 	 	lcbo_beers.puts "\t<div class=\"page_container\">"
-		 	lcbo_beers.puts "\t<div class=\"page_header\">"
-		 		lcbo_beers.puts "\t\t<h1>Page Header</h1>"
-		 	lcbo_beers.puts "\t<div>" #closing page_header div
-		 	lcbo_beers.puts "\t<div class=\"page_body\">"
-		 		lcbo_beers.puts "\t\t<h1>Page body</h1>"
-		 	lcbo_beers.puts "\t<div>" #closing page_body div
+
+		 	lcbo_beers.puts "\t<div class=\"page_header\">" #<----HEADER
+		 		lcbo_beers.puts "<div class=\"header_navigation\">"
+		 			lcbo_beers.puts "<h1>LCBO BEERS</h1>"
+		 		lcbo_beers.puts "\t</div>" #closing header_navigation
+		 		lcbo_beers.puts "<div class=\"header_navigation\">"
+			 		lcbo_beers.puts "<ul>"
+			        	 lcbo_beers.puts "<li>SPIRITS</li>"
+			        	 lcbo_beers.puts "<li>WINE</li>"
+			        	 lcbo_beers.puts "<li>BEER</li>"
+			        	 lcbo_beers.puts "<li>HOME</li>"
+					lcbo_beers.puts "</ul>"
+					lcbo_beers.puts "\t</div>" #closing header_navigation
+			 lcbo_beers.puts "\t</div>" #closing page_header div
+
+		 	lcbo_beers.puts "\t<div class=\"page_body\">" #<-----BODY
+		 		lcbo_beers.puts "\t\t<h1>Page Body</h1>"
+		 	lcbo_beers.puts "\t</div>" #closing page_body div
+
+			lcbo_beers.puts "\t<div class=\"page_footer\">" #<-----FOOTER
+		 		lcbo_beers.puts "\t\t<h1>Page Footer</h1>"
+		 	lcbo_beers.puts "\t</div>" #closing page_body div
+
 		 	# @all_beers.each_with_index do |beer, index|
 		 	# 	lcbo_beers.puts "\t\t<div class=\"product_details\">"
 			# 		lcbo_beers.puts "\t\t\t<img src=\"#{@all_products[index]["image_thumb_url"]}\">"
@@ -50,6 +67,7 @@ class HtmlGenerator
 	 	lcbo_beers.puts "<head>"
 	 	lcbo_beers.puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"reset.css\">"
 	 	lcbo_beers.puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">"
+	 	puts "<\tlink href=\'http://fonts.googleapis.com/css?family=Istok+Web:400,700\' rel=\'stylesheet\' type=\'text/css\'>"
 	 	lcbo_beers.puts "\t<title>LCBO Beers</title>"
 	 	lcbo_beers.puts "</head>"
 	 	lcbo_beers.puts ""
@@ -64,6 +82,7 @@ class HtmlGenerator
 	 	puts "<head>"
 	 	puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"reset.css\">"
 	 	puts "\t<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">"
+	 	puts "<\tlink href=\'http://fonts.googleapis.com/css?family=Istok+Web:400,700\' rel=\'stylesheet\' type=\'text/css\'>"
 	 	puts "\t<title>LCBO Products</title>"
 	 	puts "</head>"
 	 	puts ""

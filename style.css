@@ -1,7 +1,6 @@
 body {
 	background: #748057;
 	font-family: 'Istok Web', sans-serif;
-	back
 }
 
 .container {
@@ -62,13 +61,20 @@ h1 {
 }
 
 .product_details {
-	margin-top: 5px;
-	background-color: ligthblue;
-	width: 100%;
+	margin: 20px 0 0 20px;
+	min-width: 290px;
+	min-height: 180px;
+	border: 1px solid black;
+	float: left;
+	background: #C2B280;
+	border-radius: 0 0 5px 0;
 }
 
-.product_details img {
+.item_info img {
 	float: left;
+	height: 35%;
+	width: 35%;
+	border-radius: 0 0 5px 0;
 }
 
 .product_details h2 {

@@ -38,10 +38,16 @@ class HtmlGenerator
 			        	 lcbo_beers.puts "<li><a href=\"lcbo.html\">HOME</a></li>"
 					lcbo_beers.puts "</ul>"
 					lcbo_beers.puts "\t</div>" #closing header_navigation
-			 lcbo_beers.puts "\t</div>" #closing page_header div
+			 lcbo_beers.puts "\t</div>" #<------CLOSING HEADER
 
 		 	lcbo_beers.puts "\t<div class=\"page_body\">" #<-----BODY
-		 		lcbo_beers.puts "\t\t<h1>Page Body</h1>"
+		 			@all_beers.each_with_index do |beer, index|
+		 				lcbo_beers.puts "\t\t<div class=\"product_details\">"
+		 					lcbo_beers.puts "<div class=\"item_info\">"
+		 						lcbo_beers.puts "<img src=\"#{@all_products[index]["image_thumb_url"]}\">" unless @all_products[index]["image_thumb_url"].nil?
+		 					lcbo_beers.puts "</div>" #closing item_info(image)
+		 				lcbo_beers.puts "\t\t\</div>" #closing list_items div
+		 			end
 		 	lcbo_beers.puts "\t</div>" #closing page_body div
 
 			lcbo_beers.puts "\t<div class=\"page_footer\">" #<-----FOOTER

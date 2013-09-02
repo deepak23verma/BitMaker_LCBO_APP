@@ -249,7 +249,21 @@ class HtmlGenerator
 
 
 	def main_wrapper
-	 	puts "\t<div id=\"main_container\">"
+	 	puts "<div id=\"main_container\">"
+	 		puts "<div id=\"main_image\">"
+	 			puts "<img src=img/lcbo_logo.png>"
+	 		puts "</div>"
+	 		puts "<div id=\"main_navigation\">"
+	 		puts "<ul>"
+	 			puts "<li><a href=\"lcbo_beers.html\">BEERS</a></li>"
+	 			puts "<li><a href=\"lcbo_wines.html\">WINE</a></li>"
+	 			puts "<li><a href=\"lcbo_spirits.html\">SPIRITS</a></li>"
+			        
+			puts "</ul>"
+	 		puts "</div>"
+	 	puts "</div>" #<-----CLOSE OF MAIN CONTAINER
+	 	puts "</body>"
+	 	puts "</html>"
 	end
 
 

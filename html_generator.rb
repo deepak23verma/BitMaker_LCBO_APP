@@ -3,9 +3,6 @@ require 'open-uri'
 
 class HtmlGenerator
 	def index
-		# total_response = open("http://lcboapi.com/products?per_page=100").read
-		# parsed_total = JSON.parse(total_response)
-		# total_pages = parsed_total["pager"]["final_page"].to_i
 		@all_products = []
 		num = 1
 		 3.times do 
@@ -64,6 +61,7 @@ class HtmlGenerator
 		 						lcbo_beers.puts "<p><span class=\"category\">Origin:</span> #{@all_beers[index]["origin"]}"
 		 						lcbo_beers.puts "<p><span class=\"category\">Alcohol Content:</span> #{(@all_beers[index]["alcohol_content"].to_f)/100}%</p>"
 		 						lcbo_beers.puts "<p><span class=\"category\">Package:</span> #{@all_beers[index]["package"]}"
+		 						lcbo_beers.puts "<p><a href=\"http://lcbo.com/lcbo-ear/lcbo/product/searchResults.do?ITEM_NAME=#{@all_beers[index]["id"]}&ITEM_NUMBER=#{@all_beers[index]["id"]}&language=EN\">More info...</a>"
 		 					lcbo_beers.puts "</div>" #closing item_info(details)
 		 				lcbo_beers.puts "\t\t\</div>" #closing list_items div
 		 			end
@@ -118,6 +116,7 @@ class HtmlGenerator
 		 						lcbo_wines.puts "<p><span class=\"category\">Origin:</span> #{@all_wines[index]["origin"]}"
 		 						lcbo_wines.puts "<p><span class=\"category\">Alcohol Content:</span> #{(@all_wines[index]["alcohol_content"].to_f)/100}%</p>"
 		 						lcbo_wines.puts "<p><span class=\"category\">Red or White:</span> #{@all_wines[index]["secondary_category"]}"
+		 						lcbo_wines.puts "<p><a href=\"http://lcbo.com/lcbo-ear/lcbo/product/searchResults.do?ITEM_NAME=#{@all_wines[index]["id"]}&ITEM_NUMBER=#{@all_wines[index]["id"]}&language=EN\">More info...</a>"
 		 					lcbo_wines.puts "</div>" #closing item_info(details)
 		 				lcbo_wines.puts "\t\t\</div>" #closing list_items div
 		 			end
@@ -172,14 +171,14 @@ class HtmlGenerator
 		 						lcbo_spirits.puts "<p><span class=\"category\">Origin:</span> #{@all_spirits[index]["origin"]}"
 		 						lcbo_spirits.puts "<p><span class=\"category\">Alcohol Content:</span> #{(@all_spirits[index]["alcohol_content"].to_f)/100}%</p>"
 		 						lcbo_spirits.puts "<p><span class=\"category\">Type:</span> #{@all_spirits[index]["secondary_category"]}"
+		 						lcbo_spirits.puts "<p><a href=\"http://lcbo.com/lcbo-ear/lcbo/product/searchResults.do?ITEM_NAME=#{@all_spirits[index]["id"]}&ITEM_NUMBER=#{@all_spirits[index]["id"]}&language=EN\">More info...</a>"
 		 					lcbo_spirits.puts "</div>" #closing item_info(details)
 		 				lcbo_spirits.puts "\t\t\</div>" #closing list_items div
 		 			end
 		 	lcbo_spirits.puts "\t</div>" #<--------CLOSING PAGE BODY
-
 			lcbo_spirits.puts "\t<div class=\"page_footer\">" #<-----FOOTER
 		 		lcbo_spirits.puts "\t\t<h1>CHEERS!</h1>"
-		 	lcbo_spirits.puts "\t</div>" #closing page_body div
+		 	lcbo_spirits.puts "\t</div>" #closing page_footer div
 	 	lcbo_spirits.puts "</div>" #closing page_container div
 	 	lcbo_spirits.puts "</body"
 	 	lcbo_spirits.puts "</html>"
@@ -268,10 +267,10 @@ class HtmlGenerator
 
 
 	def show(product_id)
-		product = []
+		@product = []
     	products_page = open("http://lcboapi.com/products/#{product_id}").read
     	parsed_product = JSON.parse(products_page)["result"] #=> hash
-    	product << parsed_product # => Array of hashes
+    	@product << parsed_product # => Array of hashes
     	html_doctype
     	product_page_html
 	end
@@ -291,6 +290,22 @@ class HtmlGenerator
 						puts "</ul>"
 						puts "\t</div>" #closing header_navigation
 				 puts "\t</div>" #<------CLOSING HEADER
+				 puts "\t<div class=\"product_page_body\">" #<-------PAGE BODY
+				 	puts "\t<div id=\"product_page_image\">"
+				 	if @product[0]["image_thumb_url"] == nil
+		 					puts "<img src=img/default_image.jpg>"
+		 				else
+		 					puts "<img src=\"#{@product[0]["image_thumb_url"]}\">"
+		 				end
+		 			puts "\t</div>" #<-------CLOSING PRODUCT IMAGE DIV
+		 			puts "\t<div id=\"product_page_details\">"
+		 				puts "<h2>#{@product[0]["name"]}</h2>"
+		 				puts "<p><span class=\"category\">Price:</span> $#{(@product[0]["regular_price_in_cents"].to_f)/100}</p>"
+		 				puts "<p><span class=\"category\">Origin:</span> #{@product[0]["origin"]}"
+		 				puts "<p><span class=\"category\">Alcohol Content:</span> #{(@product[0]["alcohol_content"].to_f)/100}%</p>"
+		 				puts "<p><span class=\"category\">Type:</span> #{@product[0]["secondary_category"]}"
+		 				puts "<p><a href=\"http://lcbo.com/lcbo-ear/lcbo/product/searchResults.do?ITEM_NAME=#{@product[0]["id"]}&ITEM_NUMBER=#{@product[0]["id"]}&language=EN\">More info...</a>"
+				 puts "\t</div>" #<------------CLOSING PRODUCT PAGE BODY
 		puts "</div>" #<--------CLOSING PAGE CONTAINER
 	end
 end

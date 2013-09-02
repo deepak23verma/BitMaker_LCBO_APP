@@ -8,7 +8,7 @@ else
 	if action == "index"
 		generator.index
 	elsif action == "show"
-		generator.show
+		generator.show(ARGV[1])
 	else
 		puts "Unknown action #{action}. Use index or show."
 	end

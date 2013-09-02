@@ -18,6 +18,7 @@ class HtmlGenerator
 		    	num += 1
 		 end
 		html_doctype
+		main_wrapper
 		beers_html_doctype
 		wines_html_doctype
 		spirits_html_doctype
@@ -244,7 +245,6 @@ class HtmlGenerator
 	 	puts "</head>"
 	 	puts ""
 	 	puts "<body>"
-	 	main_wrapper
 	 end
 
 
@@ -267,6 +267,30 @@ class HtmlGenerator
 	end
 
 
-	# def show(product_id)
-	# end
+	def show(product_id)
+		product = []
+    	products_page = open("http://lcboapi.com/products/#{product_id}").read
+    	parsed_product = JSON.parse(products_page)["result"] #=> hash
+    	product << parsed_product # => Array of hashes
+    	html_doctype
+    	product_page_html
+	end
+
+	def product_page_html
+		puts "\t<div class=\"page_container\">"
+			puts "\t<div class=\"page_header\">" #<----HEADER
+			 	puts "<div class=\"header_navigation\">"
+			 		puts "<h1>LCBO PRODUCT</h1>"
+			 	puts "\t</div>" #closing header_navigation
+			 		puts "<div class=\"header_navigation\">"
+				 		puts "<ul>"
+				        	 puts "<li><a href=\"lcbo_spirits.html\">SPIRITS</a></li>"
+				        	 puts "<li><a href=\"lcbo_wines.html\">WINE</a></li>"
+				        	 puts "<li><a href=\"lcbo_beers.html\">BEERS</a></li>"
+				        	 puts "<li><a href=\"lcbo.html\">HOME</a></li>"
+						puts "</ul>"
+						puts "\t</div>" #closing header_navigation
+				 puts "\t</div>" #<------CLOSING HEADER
+		puts "</div>" #<--------CLOSING PAGE CONTAINER
+	end
 end

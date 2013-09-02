@@ -43,12 +43,19 @@ a {
 
 .page_body {
 	clear: both;
+	min-height: 9305px;
+	width: 100%;
 	background-color: #373f24;
 	margin-bottom: 5px;
 }
 
 .page_footer {
 	background-color: #373f24;
+	clear: both;
+}
+
+.page_footer h1 {
+	text-align: center;
 }
 
 h1 {
